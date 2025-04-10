@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm install --legacy-peer-deps && next build",
     "start": "next start",
     "lint": "next lint",
     "prisma:generate": "prisma generate",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@netlify/plugin-nextjs": "^5.10.4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
