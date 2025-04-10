@@ -108,6 +108,8 @@ export async function signOut() {
 }
 
 export async function signInWithGithub() {
+
+  
   const origin = (await headers()).get("origin");
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithOAuth({
