@@ -25,6 +25,9 @@ const Navbar = async () => {
           <div className="flex items-center gap-x-5">
             <Link href="/avatar">Avatar</Link>
           </div>
+          <div className="flex items-center gap-x-5">
+            <Link href="/users">Users</Link>
+          </div>
         </div>
         <div className="flex items-center gap-x-5">
           {!user ? (

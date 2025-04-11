@@ -6,6 +6,12 @@ const nextConfig: NextConfig = {
     // ⚠️ Bỏ qua lỗi ESLint khi build
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: [
+      'avatars.githubusercontent.com',
+      'bbdhjsuapldrvcinygav.supabase.co'
+    ],
+  },
 };
 
 export default nextConfig;
