@@ -15,6 +15,7 @@ model UserProfile {
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   avatar_url      String?
+  role            UserRole        @default(USER)
   sharedDocuments DocumentShare[] @relation("UserSharedDocuments")
   documents       Document[]      @relation("UserDocuments")
 
@@ -44,4 +45,10 @@ model DocumentShare {
 
   @@unique([documentId, userId])
   @@map("document_shares")
+}
+
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
 }

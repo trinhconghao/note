@@ -8,6 +8,21 @@ const Navbar = async () => {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  let role: string | null = null;
+
+  if (user) {
+    const { data: profile, error } = await supabase
+      .from("user_profiles")
+      .select("role")
+      .eq("id", user.id)
+      .single();
+
+    if (!error && profile) {
+      role = profile.role;
+    }
+  }
+
   return (
     <nav className="border-b bg-background w-full flex items-center">
       <div className="flex w-full items-center justify-between my-4">
@@ -16,18 +31,17 @@ const Navbar = async () => {
         </Link>
 
         <div className="flex items-center gap-6">
-          {/* <div className="flex items-center gap-x-5">
-            <Link href="/private">Private</Link>
-          </div> */}
           <div className="flex items-center gap-x-5">
             <Link href="/documents">Documents</Link>
           </div>
           <div className="flex items-center gap-x-5">
             <Link href="/avatar">Avatar</Link>
           </div>
-          <div className="flex items-center gap-x-5">
-            <Link href="/users">Users</Link>
-          </div>
+          {role === "ADMIN" && (
+            <div className="flex items-center gap-x-5">
+              <Link href="/users">Users</Link>
+            </div>
+          )}
         </div>
         <div className="flex items-center gap-x-5">
           {!user ? (
